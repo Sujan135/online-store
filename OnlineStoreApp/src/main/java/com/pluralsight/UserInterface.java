@@ -24,10 +24,23 @@ public class UserInterface {
         }
     }
 
+    public String forSearchTerm() {
+        System.out.println("Enter search item");
+        scanner.nextLine();
+        return scanner.nextLine();
+    }
+
     public String forSkuToAdd()  {
         System.out.println("Enter SKU to add to cart: ");
         return scanner.next();
     }
+
+    public String forSkuToRemove() {
+        System.out.println("Enter SKU to remove from cart");
+        return scanner.next();
+    }
+
+
     public int showProductsMenu() {
         System.out.println("\n1. Search Products");
         System.out.println("2. Add Product to Cart");
