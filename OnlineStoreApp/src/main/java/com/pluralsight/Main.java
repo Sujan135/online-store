@@ -35,20 +35,59 @@ public class Main {
                     String search = user.forSearchTerm();
                     ArrayList<Product> results = searchProducts(search);
                     user.displayProducts(results);
-
                 }
+                case 2 -> {
+                    String sku = user.forSkuToAdd();
+                    Product product = findProductBySku(sku);
+                    if (product != null) {
+                        cart.addProduct(product);
+                    }else {
+                        System.out.println("Product not found.");
+                    }
+                }
+                case 3 -> viewing = false;
+                default -> System.out.println("Invalid option.");
             }
-
         }
     }
 
     private static void showCart() {
         boolean viewing = true;
-        while(viewing) {
+        while (viewing) {
             if (cart.isEmpty()) {
-                System.out.println("Cart is empty:");
+                System.out.println("Cart is empty.");
+            } else {
+                for (Product p : cart.getCartItems()) {
+                    System.out.println(p);
+                }
+                System.out.printf("Total: $%.2f%n", cart.calculateTotal());
+            }
+
+            int choice = user.showCartMenu();
+            switch (choice) {
+                case 1 -> {
+                    String sku = user.forSkuToRemove();
+                    cart.removeProduct(sku);
+                }
+                case 2 -> {
+                    System.out.println("Checkout successful! Total: $" + cart.calculateTotal());
+                    cart = new Cart();
+                    viewing = false;
+                }
+                case 3 -> viewing = false;
+                default -> System.out.println("Invalid option.");
             }
         }
+    }
+
+
+    private static Product findProductBySku(String sku) {
+        for (Product product : inventory) {
+            if (product.getSku().equalsIgnoreCase(sku)) {
+                return product;
+            }
+        }
+        return null;
     }
 
     private static ArrayList<Product> searchProducts(String keyword) {
