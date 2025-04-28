@@ -14,6 +14,7 @@ public class Product {
     }
 
     public String toString(){
+
         return sku + " | " + name + " | " + price + " | " + department;
     }
 }
