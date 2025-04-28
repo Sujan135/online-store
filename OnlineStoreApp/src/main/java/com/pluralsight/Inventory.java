@@ -4,10 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class ProductLoader {
+public class Inventory {
         public static ArrayList<Product> loadProducts(String filename) {
         ArrayList<Product> inventory = new ArrayList<>();
 

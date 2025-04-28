@@ -13,6 +13,22 @@ public class Product {
         this.department = department;
     }
 
+    public String getSku() {
+        return sku;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
     public String toString(){
 
         return sku + " | " + name + " | " + price + " | " + department;
